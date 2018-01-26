@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/vue.min.js"></script>
+  <title>Document</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  header{
+    padding: 30px;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #cccccc;
+    box-shadow: 20px;
+    background: antiquewhite;
+    width: 100%;
+    color: red;
+    margin:0 auto;
+  }
+  .mess-inp{
+    width: 80%;
+    margin: 20px auto;
+  }
+  .mess-inp input{
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+  }
+  .mess-inp button{
+    padding: 10px 0;
+    background: cornflowerblue;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    border: 0;
+    border-radius: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .mess-box{
+    width: 80%;
+    margin: 20px auto;
+    border: #cccccc 1px solid;
+    padding: 0 0 20px 0;
+    box-sizing: border-box;
+  }
+  .mess-box h3{
+    padding: 10px 20px;
+    background:whitesmoke;
+    border-bottom: #cccccc 1px solid;
+  }
+  .mess-box button{
+    padding: 10px 0;
+    background:rebeccapurple;
+    color: #fff;
+    font-size: 20px;
+    display: block;
+    width: 20%;
+    margin: auto;
+    border: 0;
+    border-radius: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  .mess-box .info{
+    padding: 10px 20px;
+    position: relative;
+    border-bottom: whitesmoke 1px solid;
+  }
+  .mess-box .info i{
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: blue;
+    font-style: normal;
+    cursor: pointer;
+  }
+  .mess-box .info:hover i{
+    display: block
+  }
+  .zw-info{
+    padding: 30px;
+    text-align: center;
+    display: none;
+  }
+</style>
+<body>
+  <div id="board">
+    <header>{{ message }}</header>
+    <div class="mess-inp">
+      <input type="text" v-model="newItem" @keyup.enter="addNew" placeholder="请输入内容">
+      <button @click="addNew">提交</button>
+    </div>
+    <div class="mess-box">
+      <h3>留言列表</h3>
+      <div v-for='(item ,index) in items' class="info" :key="index">{{item.label}} 
+        <i @click="delMess()">删除</i>
+      </div>
+      
+      <div class="zw-info">暂无留言内容</div>
+      <button @click="delAll()">清除所有留言</button>
+    </div>
+  </div>
+  <script>
+    new Vue({
+      el:"#board",
+      data:function(){
+        return{
+          message:'留言板',
+          items:[],
+          newItem:'',
+        }
+      },
+      mounted() {
+        this.items = JSON.parse(localStorage.getItem('allItem')).data;
+      },
+      methods:{
+
+        locS(key, val){
+          localStorage.setItem(key, JSON.stringify({ data: val }));
+        },
+
+        addNew(){
+          if (!this.newItem){
+            alert("不能为空")
+            return //文本为空的时候不能提交
+          }
+          this.items.push({
+            label:this.newItem
+          })
+          this.newItem='';
+          this.locS('allItem', this.items)
+        },
+        
+        delMess(index){
+          this.items.splice(index,1);
+          this.llocSoS('allItem', this.items)
+        },
+        delAll(index){
+          this.items.splice(index);
+          this.locS('allItem', this.items)
+        }
+      },
+      
+      
+    })
+  </script>
+</body>
+</html>

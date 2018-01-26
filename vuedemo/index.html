@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/vue.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="app" class="app">
+    <p>{{ message }}</p>
+    <input type="radio" id="che1" value="1" v-model="checked">
+    <label for="che1">1</label>
+    <input type="radio" id="che2" value="2" v-model="checked">
+    <label for="che2">2</label>
+    <input type="radio" id="che3" value="3" v-model="checked">
+    <label for="che3">3</label>
+    <br>
+    <span>{{ checked }}</span>
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{option.text}}
+      </option>
+    </select>
+    <span>{{selected}}</span><br>
+    <ul>
+      <my-component v-for="item in sites" v-bind:todo="item"/>
+    </ul>
+    
+  </div>
+  <script>
+
+    Vue.component('my-component', {
+      props:['todo'],
+      template:'<li>{{todo.text}}</li>'
+    });
+
+    new Vue({
+      el:"#app",
+      data:{
+        message:'Hello',
+        checked:'',
+        selected:'b',
+        options:[
+          {text:'1', value:'a'},
+          {text:'2', value:'b'},
+          {text:'3', value:'c'}
+        ],
+        sites:[
+          {text:'text1'},
+          {text:'text2'},
+          {text:'text3'},
+          {text:'text4'},
+        ]
+      }
+    })
+    
+   
+  </script>
+
+  
+</body>
+</html>
