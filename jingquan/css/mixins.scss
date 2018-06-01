@@ -1,0 +1,73 @@
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+@mixin transition($transitions) {
+  -webkit-transition: $transitions;
+  -moz-transition: $transitions;
+  -ms-transition: $transitions;
+  -o-transition: $transitions;
+  transition: $transitions;
+}
+
+@mixin select-box($width: 200px, $height: 36px, $borderColor: #d8d8d8) {
+  width: $width;
+  height: $height;
+  .select-text-box {
+    width: $width - 9px - 24px - 2px;
+    height: $height - 2px;
+    line-height: $height - 2px;
+    border: $borderColor solid 1px;
+    padding: 0 24px 0 9px;
+    .select-text,.search-input-text {
+      width: $width - 9px - 24px - 2px;
+      height: $height - 2px;
+    }
+  }
+  .option-box {
+    width: $width - 2px;
+    top: $height - 1px;
+  }
+}
+
+@mixin input($width:200px, $height:36px,$borderColor:#d8d8d8){
+  width:$width - 9px - 9px - 2px;
+  height:$height - 12px;
+  line-height:$height - 12px ;
+  padding: 5px 9px;
+  border:$borderColor solid 1px;
+}
+
+@mixin search-box($width: 200px, $height: 36px) {
+  width: $width - 42px;
+  height: $height - 12px;
+  padding: 5px 8px 5px 32px;
+  .search-text{
+    height: $height - 12px;
+    line-height: $height - 12px;
+  }
+  .search-btn{
+    height: $height - 2px;
+  }
+}
+
+@mixin searching($width: 300px, $height: 36px) {
+  //width: $width - 118px;
+  height: $height - 16px;
+  padding: 7px 40px 7px 0;
+  .search-state{
+    height: $height - 16px;
+    line-height: $height - 16px;
+  }
+  .search-text{
+    height: $height - 16px;
+    line-height: $height - 16px;
+  }
+  .search-btn{
+    height: $height - 2px;
+  }
+}
+
