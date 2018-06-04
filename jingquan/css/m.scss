@@ -26,6 +26,10 @@ a{
   color: #434343;
   text-decoration: none;
 }
+img{
+  width: 100%;
+  display: block;
+}
 .m-header{
   width: 100%;
   background: rgba($color: #fff, $alpha: 0.9);
@@ -341,31 +345,35 @@ a{
     }
   }
 }
-.m-searchlist-main{
+.m-list-main{
   padding-top: 110px;
-
 }
-.m-searchlist{
+.m-list{
   position: relative;
-  .searchlist-item{
+  overflow: hidden;
+  .list-item{
     min-height: 100px;
     position: absolute;
     background: #fff;
     overflow: hidden;
     width: 49%;
-    .searchlist-item-a{
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    &:nth-child(even){margin: 0;}
+    .list-item-a{
       display: block;
       height: 100%;
     }
-    .searchlist-cover{
+    .list-cover{
       width: 100%;
       img{
         display: block;
         width: 100%;
       }
     }
-    .searchlist-info{
-      .searchlist-title{
+    .list-info{
+      .list-title{
         width: 90%;
         margin: 10px auto 0;
         overflow: hidden;
@@ -379,55 +387,57 @@ a{
         line-height: 20px;
         .jdico{
           display: inline-block;
-          width: 20px;
-          height: 16px;
+          width: 18px;
+          height: 14px;
           text-align: center;
           border: #d4237a 1px solid;
           color: #d4237a;
-          line-height: 16px;
+          line-height: 14px;
           margin-right: 6px
         }
       }
-      .searchlist-bottom{
+      .list-bottom{
         width: 90%;
         position: relative;
         margin: 15px auto 0;
-        .searchlist-grey{
+        .list-grey{
           color: #939393;
           text-decoration: line-through
         }
-        .searchlist-price{
+        .list-price{
           color: #d4237a;
           font-size: 16px;
           font-weight: bold;
           position: relative;
-          padding-left: 36px;
-          height: 40px;
+          padding-left: 32px;
+          height: 36px;
+          line-height: 36px;
           .int{
-            font-size: 24px;
+            font-size: 18px;
           }
           .priceicon{
-            width: 34px;
-            height: 24px;
+            width: 30px;
+            height: 20px;
             display: inline-block;
             background: url(../images/m-qhico.png) no-repeat center;
             background-size: contain;
             position: absolute;
             left: 0;
-            top: 5px
+            top: 8px
           }
         }
-        .searchlist-coupon{
-          width: 66px;
+        .list-coupon{
+          width: 60px;
           height: 24px;
           color: #fff;
           text-align: center;
           line-height: 24px;
+          font-size: 13px;
           background: url(../images/yhjbg.png) no-repeat center;
           background-size: contain;
           position: absolute;
           right: 0;
-          bottom: 10px;
+          bottom: 8px;
         }
       }
     }
@@ -542,7 +552,7 @@ a{
 .izl-rmenu{
   position:fixed;
   right:10px;
-  bottom:10px;
+  bottom:60px;
   z-index:999;
   background: rgba($color: #d4237a, $alpha: 0.5);
   .btn{
@@ -558,6 +568,169 @@ a{
   }
 }
 
+/**详细**/
+.m-head-bg{
+  position:fixed;
+  left: 0px;
+  top:0px;
+  width: 100%;
+  height: 50px;
+  z-index:5;
+  background: rgba($color: #d4237a, $alpha: 0.2);
+  
+  .btn-top{
+    background: url(../images/arrow-up.png) no-repeat center;
+    background-size: 80%;
+    display:none;
+    width:40px;
+    height:40px;
+    cursor:pointer;
+    position:relative;
+  }
+}
+.m-info-main{  
+  background: #fff;
+  .info-img{
+    width: 100%;
+  }
+  .info-head{
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    .return{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 5px;
+      left: 12px;
+      background: rgba($color: #d4237a, $alpha: 0.2);
+      border-radius: 50%;
+      &::after{
+        content: '';
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: url(../images/arrow-left.png) no-repeat center;
+        background-size: 50%
+      }
+    }
+  }
+  .info-title{
+    padding: 0 15px;
+    margin-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 50px;
+    word-break: break-all;
+    color: #333;
+    line-height: 26px;
+    font-size: 18px;
+    .jdico{
+      display: inline-block;
+      width: 26px;
+      height: 18px;
+      text-align: center;
+      border: #d4237a 1px solid;
+      color: #d4237a;
+      line-height: 18px;
+      margin-right: 6px
+    }
+  }
+  .abstract-text{
+    font-size: 12px;
+    color: #d4237a;
+    padding: 10px 15px;
+    line-height: 20px;
+  }
+  .info-discount{
+    margin: 8px 15px;
+    position: relative;
+    padding-bottom: 12px;
+    .info-grey{
+      color: #939393;
+      font-size: 16px;
+      text-decoration: line-through
+    }
+    .info-price{
+      color: #d4237a;
+      font-size: 18px;
+      font-weight: bold;
+      position: relative;
+      padding-left: 45px;
+      height: 40px;
+      line-height: 40px;
+      .int{
+        font-size: 30px;
+      }
+      .priceicon{
+        width: 40px;
+        height: 30px;
+        display: inline-block;
+        background: url(../images/m-qhico.png) no-repeat center;
+        background-size: contain;
+        position: absolute;
+        left: 0;
+        top: 8px
+      }
+    }
+    .popularity{
+      color: #939393;
+      position: absolute;
+      right: 0;
+      bottom: 15px;
+      font-size: 12px;
+    }
+  }
+}
+.info-bottom{
+  height: 50px;
+  .info-coupon{
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #d4237a;
+    background:-webkit-linear-gradient( left, #f04569, #d4237a); 
+    background:linear-gradient(left, #f04569, #d4237a);
+    .info-coupon-btn{
+      display: block;
+      color: #fff;
+      font-size: 18px;
+      width: 100%;
+      line-height: 50px;
+      span{
+        display: block;
+        float: left;
+        height: 50px;
+        width: 40%;
+        text-align: center;
+        &.sp-cou{
+          width: 60%;
+          border-right: #ffc4cc 1px solid;
+          margin-left: -1px;
+        }
+      }
+    }
+  }
+}
+.recommend-title{
+  padding: 5px 15px 12px;
+  font-size: 16px
+}
+.recommend-list{
+  overflow: hidden;
+  .list-item{
+    position: relative;
+
+  }
+}
 
 @media screen and (max-width: 340px) {
   .m-prolist{
