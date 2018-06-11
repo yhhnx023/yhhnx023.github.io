@@ -53,6 +53,10 @@ $(function () {
   });
 });
 
+// $('.m-nav ul li').click(function(){
+// 	$(this).addClass('cur').siblings('.cur').removeClass('cur');	
+//   })
+  
 $(function () {
   function getTop() {
     var top = $(document).scrollTop();
