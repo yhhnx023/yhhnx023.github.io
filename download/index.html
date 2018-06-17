@@ -19,6 +19,16 @@
     $(".android").hide();
   }
   });
+
+  function iosIframeWidthBug(){
+    //不是 iphone ipad就不执行了
+    if (!navigator.userAgent.match(/iPad|iPhone/i))
+        return false;
+    //获取子iframe
+    var iframebody = document.getElementById('iframe1').contentWindow.document.body;
+        iframebody.style.width = document.body.clientWidth+'px';
+ 
+}
   </script>
 <style>
 .ifr{
@@ -30,7 +40,7 @@
 }
 </style>
 <body>
-  <iframe class="ifr ios" src="https://www.pgyer.com/NB0N" frameborder="0"></iframe>
+  <iframe id="iframe1" class="ifr ios" src="https://www.pgyer.com/NB0N" frameborder="0"></iframe>
   <iframe class="ifr android" src="https://www.pgyer.com/FJIc" frameborder="0"></iframe>
 </body>
 </html>
