@@ -8,16 +8,15 @@
 </head>
 <script>
   $(document).ready(function(){
-  if (/android/i.test(navigator.userAgent)){
-    //适配android
-    $(".ios").hide();
-    $(".android").show();
-  }
-  if (/ipad|iphone|mac/i.test(navigator.userAgent)){	
+    var ua = navigator.userAgent.toLowerCase(); 
+    if (/iphone|ipad|ipod/.test(ua)){	
     // 适配ios
     $(".ios").show();
     $(".android").hide();
-  }
+  }else if (/android/.test(ua)) {
+    $(".ios").hide();
+    $(".android").show();   
+    }
   });
 
   </script>
