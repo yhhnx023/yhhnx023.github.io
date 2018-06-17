@@ -19,16 +19,6 @@
     $(".android").hide();
   }
   });
-  $("#iframeios")[0].onload = function () {
-    iosIframeWidthBug();
-};
-function iosIframeWidthBug() {
-    if (!navigator.userAgent.match(/iPad|iPhone/i)) {
-        return false;
-   }
-   var iframebody = document.getElementById('iframeios').contentWindow.document.body;
-   iframebody.style.width = document.body.clientWidth + 'px';
-}
 
   </script>
 <style>
@@ -38,8 +28,6 @@ html,body{
   height: 100%;
 }
 .scroll-wrapper{
-  -webkit-overflow-scrolling: touch;
-  overflow: auto;
   position: fixed;
   right: 0;
   left: 0;
@@ -49,17 +37,21 @@ html,body{
   height: 100%;
   display: none;
 }
-.scroll-wrapper iframe{
+.android iframe{
   width: 100%;
   height: 100%;
   display: block;
   vertical-align: bottom;
-
+}
+.iso iframe{
+  width: 1px;
+  min-width: 100%;
+  *width: 100%;
 }
 </style>
 <body>
   <div class="scroll-wrapper ios">  
-      <iframe src="https://www.pgyer.com/NB0N" scrolling="auto" frameborder="0" id="iframeios"></iframe>  
+      <iframe src="https://www.pgyer.com/NB0N" height="950" width="100%" scrolling="no"></iframe>  
   </div>  
   <div class="scroll-wrapper android">  
       <iframe src="https://www.pgyer.com/FJIc" scrolling="auto" frameborder="0"></iframe>  
