@@ -10,13 +10,11 @@
   $(document).ready(function(){
   if (/android/i.test(navigator.userAgent)){
     //适配android
-    $(".ios").hide();
-    $(".android").show();
+    window.location.href='https://www.pgyer.com/FJIc';
   }
   if (/ipad|iphone|mac/i.test(navigator.userAgent)){	
     // 适配ios
-    $(".ios").show();
-    $(".android").hide();
+    window.location.href='https://www.pgyer.com/NB0N';
   }
   });
 
@@ -40,7 +38,6 @@
 }
 </style>
 <body>
-  <iframe id="iframe1" class="ifr ios" src="https://www.pgyer.com/NB0N" frameborder="0"></iframe>
-  <iframe class="ifr android" src="https://www.pgyer.com/FJIc" frameborder="0"></iframe>
+
 </body>
 </html>
