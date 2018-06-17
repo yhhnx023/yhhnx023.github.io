@@ -8,15 +8,16 @@
 </head>
 <script>
   $(document).ready(function(){
-    var ua = navigator.userAgent.toLowerCase(); 
-    if (/iphone|ipad|ipod/.test(ua)){	
+  if (/android/i.test(navigator.userAgent)){
+    //适配android
+    $(".ios").hide();
+    $(".android").show();
+  }
+  if (/ipad|iphone|mac/i.test(navigator.userAgent)){	
     // 适配ios
     $(".ios").show();
     $(".android").hide();
-  }else if (/android/.test(ua)) {
-    $(".ios").hide();
-    $(".android").show();   
-    }
+  }
   });
 
   </script>
@@ -35,23 +36,16 @@ html,body{
   width: 100%;
   height: 100%;
 }
-.android iframe{
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.iso iframe{
+.iso{
   width: 1px;
   min-width: 100%;
   *width: 100%;
 }
 </style>
 <body>
-  <div class="scroll-wrapper android">  
-      <iframe src="https://www.pgyer.com/FJIc"  frameborder="0"></iframe>  
-  </div>  
-  <div class="scroll-wrapper ios">  
-      <iframe src="https://www.pgyer.com/NB0N" height="950" width="100%" scrolling="no"></iframe>  
-  </div>  
+  
+      <iframe class="scroll-wrapper android" src="https://www.pgyer.com/FJIc" frameborder="0" ></iframe>
+      <iframe class="scroll-wrapper ios" src="https://www.pgyer.com/NB0N" height="950" width="100%" scrolling="no" frameborder="0"></iframe>    
+ 
 </body>
 </html>
