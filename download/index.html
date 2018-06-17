@@ -10,17 +10,13 @@
   $(document).ready(function(){
   if (/android/i.test(navigator.userAgent)){
     //适配android
-    $(".ios").hide();
-    $(".android").show();
-    alert("android");
+   alert("安卓")
   }
   if (/ipad|iphone|mac/i.test(navigator.userAgent)){	
     // 适配ios
-    $(".ios").show();
-    $(".android").hide();
-    alert("ios");
+   alert("ios")
   }
-  });
+});
   </script>
 <style>
 
