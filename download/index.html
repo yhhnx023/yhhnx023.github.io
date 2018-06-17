@@ -10,23 +10,14 @@
   $(document).ready(function(){
   if (/android/i.test(navigator.userAgent)){
     //适配android
-    window.location.href='https://www.pgyer.com/FJIc';
+    window.lopen='https://www.pgyer.com/FJIc';
   }
   if (/ipad|iphone|mac/i.test(navigator.userAgent)){	
     // 适配ios
-    window.location.href='https://www.pgyer.com/NB0N';
+    window.open='https://www.pgyer.com/NB0N';
   }
   });
 
-  function iosIframeWidthBug(){
-    //不是 iphone ipad就不执行了
-    if (!navigator.userAgent.match(/iPad|iPhone/i))
-        return false;
-    //获取子iframe
-    var iframebody = document.getElementById('iframe1').contentWindow.document.body;
-        iframebody.style.width = document.body.clientWidth+'px';
- 
-}
   </script>
 <style>
 .ifr{
