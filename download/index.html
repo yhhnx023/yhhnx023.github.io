@@ -19,16 +19,14 @@
     $(".android").hide();
   }
   });
-  $("#iframe")[0].onload = function () {
-    iosIframeWidthBug();
-};
-function iosIframeWidthBug() {
-    if (!navigator.userAgent.match(/iPad|iPhone/i)) {
-        return false;
-   }
-   var iframebody = document.getElementById('iframe').contentWindow.document.body;
-   iframebody.style.width = document.body.clientWidth + 'px';
-}
+  
+  var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+var clientWidth = documentElement.clientWidth;
+if(isIOS) $('#parentId').width(clientWidth + 'px'); */
+
+//为了更好的兼容，就不判断设备，直接动态获取宽度
+var clientWidth = documentElement.clientWidth;
+$('#parentId').width(clientWidth + 'px');
 
   </script>
 <style>
@@ -58,7 +56,7 @@ html,body{
 </style>
 <body>
   <div class="scroll-wrapper ios">  
-      <iframe src="https://www.pgyer.com/NB0N" scrolling="auto" frameborder="0" id="iframe"></iframe>  
+      <iframe src="https://www.pgyer.com/NB0N" scrolling="auto" frameborder="0" id="parentId"></iframe>  
   </div>  
   <div class="scroll-wrapper android">  
       <iframe src="https://www.pgyer.com/FJIc" scrolling="auto" frameborder="0"></iframe>  
