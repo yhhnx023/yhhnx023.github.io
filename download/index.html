@@ -12,18 +12,15 @@
     //适配android
     $(".ios").hide();
     $(".android").show();
+    alert("android");
   }
   if (/ipad|iphone|mac/i.test(navigator.userAgent)){	
     // 适配ios
     $(".ios").show();
     $(".android").hide();
+    alert("ios");
   }
   });
-  var iframe= $("#iframe")
-
-var h = iframe.height();
-
-iframe.height($("#iframe").contents().find("body").height()+100)
   </script>
 <style>
 
@@ -47,9 +44,9 @@ html,body{
 }
 </style>
 <body>
-      <iframe class="scroll-wrapper android" src="https://www.pgyer.com/FJIc" frameborder="0" ></iframe>
+      <!-- <iframe class="scroll-wrapper android" src="https://www.pgyer.com/FJIc" frameborder="0" ></iframe> -->
       <!-- <iframe class="scroll-wrapper ios" src="https://www.pgyer.com/NB0N" height="950" width="100%" scrolling="no" frameborder="0"></iframe>     -->
-      <iframe id="iframe" onLoad="iFrameHeight();return false;" src="'https://www.pgyer.com/NB0N'" style="width: '+width+'px !important;height:100%;"  scrolling="no" frameborder="0"></iframe>
+      <!-- <iframe id="iframe" onLoad="iFrameHeight();return false;" src="'https://www.pgyer.com/NB0N'" style="width: '+width+'px !important;height:100%;"  scrolling="no" frameborder="0"></iframe> -->
  
 </body>
 </html>
