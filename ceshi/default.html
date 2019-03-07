@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>你说我猜AI识女神</title>
+<meta name="apple-touch-fullscreen" content="YES">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="pragram" content="no-cache">
+<meta name="viewport" content="initial-scale=1,minmum-scale=1,maxmum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+<script type="text/javascript">
+  (function() {
+    var baseFontSize = 100;
+    var baseWidth = 375;
+
+    var set = function() {
+      var clientWidth = document.documentElement.clientWidth || window.innerWidth;
+      var rem = 100;
+      if(clientWidth != baseWidth) {
+        rem = Math.floor(clientWidth / baseWidth * baseFontSize);
+      }
+      document.querySelector('html').style.fontSize = rem + 'px';
+    }
+    set();
+    window.addEventListener('resize', set);
+  }());
+</script>
+</head>
+<style type="text/css">
+  html {width: 100%;height: 100%;}
+  body{width: 100%;height: 100%; margin: 0; padding:0;background-color:#FAD6E2; z-index: 0;}
+  img{width: 100%; border:0; display: block;}
+  a{
+    display: inline-block;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+  }
+  *{margin:0;padding:0;border:}
+  .lottery_draw {
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: block;
+    width: 1.4rem;
+    height: .65rem;
+    background: url(images/draw.png) no-repeat;
+    background-size: 100%;
+    text-indent: -99rem;
+  }
+  .button_share{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(1rem);
+    z-index: 10;
+    margin: 0px auto;
+    text-align: center;
+    width: 100%;
+  }
+  .button_share .button_img{
+    position: absolute;
+    top: .7rem;
+    /* transform: translateX(-50%); */
+    z-index: 10;
+    display: block;
+    width: 1.2rem;
+    height: .5rem;
+    text-indent: -99rem;
+  }
+  .shop_img{
+    left: .3rem;
+    background: url(images/shop.png) no-repeat;
+    background-size: 100%;
+  }
+  .share_img {
+    right: .34rem;
+    background: url(images/share.png) no-repeat;
+    background-size: 100%;
+  }
+  .img-container {
+    height: 100%;
+    position: relative;
+    display: table;
+  }
+  .img-container .img-containerInfo{
+    display: table-cell;
+    width: 100%;
+    z-index:2;
+    width: 100%;
+    vertical-align: middle;
+    position: relative;
+    text-align: center;
+  }
+  .img-container::after{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height:50%;
+    bottom: -30%;
+    background-color: #50359c;
+    content:'';
+    z-index: 0;
+  }
+ 
+  #tip{
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/tips.png);
+    background-size: 100% auto;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-color: #000;
+    opacity:0.9;
+    text-align: center; 
+    position:fixed;
+    display: none;
+    z-index: 20
+  }
+  .tipfont{width: 60%; border-radius:25px; background: #fb9400;margin: 60% auto; padding:80px 30px; font-size: 35px;font-weight: bold; color:#fff;}
+  .delete{float: right;margin-top: -100px;margin-right: -9px;color:#fff;}
+  .onemore{
+    display:block;
+    position: absolute;
+    left: 50%; 
+    top:50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    height: 110px;
+    width: 110px;
+    z-index: 50;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none; }
+  
+</style>
+
+  <body>
+    <div id="tip" onclick="hide()"></div>
+    <div class="img-container">
+      <div class="img-containerInfo">
+        <div id="image1" class="bg_img bg_img1" style="display:none">
+          <img src="./images/share1.png"/>
+        </div>
+        <div id="image2" class="bg_img bg_img2" style="display:none">
+          <img src="./images/share2.png"/>
+        </div>
+        <div id="image3" class="bg_img bg_img3" style="display:none">
+          <img src="./images/share3.png"/>
+        </div>
+        <div class="button_share">
+          <!-- <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIwMTAyNzA2NA==&scene=123#wechat_redirect" class="button_img"><img src="images/guanzhu.png" target="_blank"></a> -->
+          <a href="javascript:void(0)" class="button_img shop_img" onclick="goShop();">购买音箱</a>
+          <a href="javascript:void(0)" class="button_img share_img" onclick="oneMore();"></a>
+          <a href="javascript:void(0)" class="lottery_draw" onclick="goDraw();">参与抽奖</a>
+        </div>
+      </div>
+    </div>
+    <!-- <div><a class="onemore" href="javascript:void(0)" onclick="oneMore();"><img src="/images/refresh.png"></a></div> -->
+    <script src="js/md5.js"></script>
+    <script src="js/ajax.js"></script>
+    <script type="text/javascript">
+      window.onload =function(){
+        pageLoadBuriedPoint('你说我猜AI识女神-结果页');
+        localStorage.getItem("data");
+        var data = localStorage.getItem("data").split(',');
+        var a_value = 0;
+        var b_value = 0;
+        var c_value = 0;
+        data.forEach(function(item) {
+          if(item === 'A') {
+            a_value += 1;
+          } else if (item === 'B') {
+            b_value += 1;
+          } else if (item === 'C') {
+            c_value += 1;
+          }
+        });
+        if(a_value >= 2) {
+          document.getElementById("image1").style.display="table-cell"
+        } else if (b_value >= 2) {
+          document.getElementById("image2").style.display="table-cell"
+        } else if (c_value >= 2) {
+          document.getElementById("image3").style.display="table-cell"
+        } else {
+          document.getElementById("image3").style.display="table-cell"
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+
+      function ShowOrHide() {
+        btnClickBuriedPoint('分享游戏');
+        var imgObj = document.getElementById("tip");
+        if (imgObj.style.display=="" || imgObj.style.display == "none") {
+          imgObj.style.display = "inline";
+        }
+        else {
+          imgObj.style.display = "none";
+        }
+      }
+      function hide () {
+        var imgObj = document.getElementById("tip");
+        if (imgObj.style.display=="" || imgObj.style.display == "none") {
+          imgObj.style.display = "inline";
+        }
+        else {
+          imgObj.style.display = "none";
+        }
+      }
+      function goShop() {
+        btnClickBuriedPoint('购买音箱');
+        setTimeout(function (){
+          location.href="https://shop.m.jd.com/?shopId=1000039942&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share&ShareTm=FLZ9b1xnyuLEu6yrA/XSMNVEE0gGrqOXIosTYaanTKErdvPK/jBE2JgMGgWvhDXpkv4owq7zQy%2B3nk8ELL5hbeQbQbOSXrs74mS%2BDwNvTp7b/iYTgWCUKmrl0wI9fF3r6zwO2zzRQ/WeX1DZQb8tdJ00BH%2BpnSQ086r5990xFaA=&utm_user=plusmember"
+        }, 300);
+      }
+      function goDraw() {
+        btnClickBuriedPoint('参与抽奖');
+        setTimeout(function() {
+          location.href="./award.html"
+        }, 300);
+      }
+      function oneMore() {
+        btnClickBuriedPoint('再玩一次');
+        setTimeout(function() {
+          location.href="./index.html"
+        }, 300);
+      }
+    </script>
+  </body>
+</html>

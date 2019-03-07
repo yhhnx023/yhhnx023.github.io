@@ -1,0 +1,198 @@
+/**
+ *  gobal全局样式
+@charset "utf-8";
+/* =reset 网页样式重置
+------------------------------------------------------------------------------------------------------------------------------*/
+html { font-size:1em;-webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-tap-highlight:rgba(0,0,0,0);-webkit-text-size-adjust:none;overflow:-moz-scrollbars-vertical;/*强制firefox出现滑动条*/}
+body {font-size: calc(100vw/7.5); width: 100%; margin: 0; padding:0; padding-bottom: env(safe-area-inset-bottom); background: #FAD6E2}
+label { cursor:pointer;}
+a:link, a:visited { text-decoration:none;}
+input:focus { outline: none; }
+input,button,select,textarea{outline:none;/*-webkit-appearance:none;*//*强制去除表单自带的样式*/ }
+textarea{resize:none;/*-webkit-appearance:none;*//*强制去除textarea自带的样式*/ }
+
+input:-webkit-autofill { -webkit-box-shadow: 0 0 0px 1000px white inset; } /*利用阴影来填充掉input自动填充色*/
+
+textarea,input,select { background: none; border:none; margin: 0; padding: 0; }
+
+a, abbr, acronym, address, applet, article, aside, audio, b, blockquote, big, body, center, canvas, caption, cite, code, command, datalist, dd, del, details, dfn, dl, div, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, keygen, label, legend, li, meter, nav, menu, object, ol, output, p, pre, progress, q, s, samp, section, small, span, source, strike, strong, sub, sup, table, tbody, tfoot, thead, th, tr, tdvideo, tt,
+u, ul, var { margin:0; padding:0;}
+
+article, aside, footer, header, hgroup, nav, section, figure, figcaption { display: block;} /*html5设置*/
+
+h1, h2, h3, h4, h5, h6, th, td, table, input, button, select, textarea, sub{ font-size:1em;}
+body, input, button, select, textarea, sub{ font-family:Arial, sans-serif;}
+em, cite, address, optgroup { font-style:normal;}
+kbd, samp, code { font-family:monospace;}
+
+img, input, button, select, textarea { vertical-align:middle;outline:none;}
+ul, ol { list-style:none;}
+img, fieldset { border:0;}
+abbr, acronym { cursor:help; border-bottom:1px dotted black;}
+table {	width:100%; border-spacing:0; border:0;}
+table th, table td { border:0;}
+legend, hr { overflow:hidden; position:absolute; top:0; left:0;}
+legend, hr, caption { visibility:hidden; font-size:0; width:0; height:0; line-height:0;}
+
+/**
+ * = global 统一样式
+ *******************************************************************************************************/
+/* 改变动画的效果方式*/
+* {
+  -webkit-transition-timing-function: ease-in-out;
+     -moz-transition-timing-function: ease-in-out;
+      -ms-transition-timing-function: ease-in-out;
+       -o-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+html {height: 100%;}
+body { position: relative; font-family:"微软雅黑"; height: 100%; margin: 0 auto; width: 100%; }
+body h1,body h2,body h3,body h4,body h5,body h6,body strong,body em {font-weight:normal; } /*微软雅体 将原有的bold属性去掉*/
+
+textarea:focus,input:focus { border: 1px solid #71b643; }
+
+/*sprite图片合并*/
+.css_sprite01 { background-image:url(../images/css_sprite01.png)!important;  background-repeat: no-repeat!important; } 
+
+/**
+ * = function 功能样式
+ *******************************************************************************************************/
+.f-ofh {overflow: hidden; height: 100%!important; } 		/*隐藏内容-overflow-hidden*/
+.f-hide { display: none!important; } 						/*隐藏内容*/
+
+.f-tc { text-align: center; }
+.f-tr { text-align: right; }
+.f-fl { float: left; }
+.f-fr { float: right; }
+.f-fixed { position: fixed; }
+.f-cur { cursor: pointer; }
+
+/*bg-background*/
+.s-bg-ddd { background: #ddd; }
+
+.m-page { position: absolute; top:0; left: 0; width:100%; z-index: 9; }
+.m-page::after{ position: absolute; bottom: 0; width: 100%;height:50%; background-color: #50359c; content:'';display: block;z-index:0;  }
+.m-page .page-con { position: relative;top: -100px; width: 100%; height: 100%; z-index:10}
+.m-page.active { z-index:40; }
+.m-page.fixed { position: fixed; }
+.m-page.move {
+	-webkit-transition:all 0.3s;
+  	   -moz-transition:all 0.3s;
+	    -ms-transition:all 0.3s;
+	     -o-transition:all 0.3s;
+	        transition:all 0.3s;
+}
+
+/*lazy-img*/
+.lazy-img,
+.lazy-finish { background-size: cover; background-repeat: no-repeat; background-position: center;}
+
+.radio_a{display: none;}
+.radio_b{display: none;}
+.radio_c{display: none;}
+.radio_d{display: none;}
+
+.radio_a+label,
+.radio_b+label,
+.radio_c+label,
+.radio_d+label,
+.radio_a:checked+label,
+.radio_b:checked+label,
+.radio_c:checked+label,
+.radio_d:checked+label{
+    display: block;
+    width: 100%;
+    height: 0.65rem;
+    font-size: 0.16rem;
+    color: #333;
+    padding-left:0.7rem;
+    line-height: 0.65rem;
+    font-weight: normal;
+    box-sizing: border-box;
+    margin-top: 0.08rem;
+}
+.radio_a+label{
+  background: url(../images/a_out.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_b+label{
+  background: url(../images/b_out.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_c+label{
+  background: url(../images/c_out.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_a:checked+label{
+  background: url(../images/a_in.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_b:checked+label{
+    background: url(../images/b_in.png) no-repeat center;
+    background-size: 100%;
+}
+.radio_c:checked+label{
+    background: url(../images/c_in.png) no-repeat center;
+    background-size: 100%;
+}
+
+.radio_div_end .radio_a+label {
+  background: url(../images/a_out_end.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_div_end .radio_a:checked+label {
+  background: url(../images/a_in_end.png) no-repeat center;
+  background-size: 100%;
+}
+
+.radio_div_end .radio_b+label {
+  background: url(../images/b_out_end.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_div_end .radio_b:checked+label {
+  background: url(../images/b_in_end.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_div_end .radio_c+label {
+  background: url(../images/c_out_end.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_div_end .radio_c:checked+label {
+  background: url(../images/c_in_end.png) no-repeat center;
+  background-size: 100%;
+}
+.radio_d+label{
+    background: url(../images/d_out.png) no-repeat center;
+    background-size: 100%;
+}
+
+.radio_d:checked+label{
+    background: url(../images/d_in.png) no-repeat center;
+    background-size: 100%;
+}
+.btn_submit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.3rem;
+  height: 0.5rem;
+  background: url(../images/tijiao.png) no-repeat;
+  background-size: 100%;
+  transform: translate(-50%, 2.45rem);
+  -webkit-transform: translate(-50%, 2.45rem);
+  text-indent: -99rem;
+  display: none;
+}
+.button_tj{ width:204px;height: auto;}
+
+/*radio的重定义*/
+.radio_div{
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  width: 96%;
+  transform: translateY(0.2rem);
+  text-align: left;
+  z-index:30;
+  margin: 0;
+}
